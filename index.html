@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="apple-touch-icon" href="https://abbado71.github.io/AMAT_V2/apple-touch-icon_1.png">
   <title>AMAT Web App</title>
   <style>
@@ -51,6 +51,29 @@
       background: rgba(210,213,228,0);
       padding: 5px 10px;
       border-radius: 10px;
+    }
+
+    /* 🔒 BLOCCO ORIENTAMENTO: forza sempre layout verticale */
+    @media screen and (orientation: landscape) {
+      body {
+        transform: rotate(-90deg);
+        transform-origin: center center;
+        width: 100vh;
+        height: 100vw;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
+      #pagina-iniziale,
+      #pagina-biglietto,
+      #pagina-ticket {
+        transform: rotate(90deg);
+        transform-origin: center center;
+        width: 100vh;
+        height: 100vw;
+      }
     }
   </style>
 </head>
@@ -217,9 +240,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-

@@ -2,9 +2,22 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <!-- Impostazioni viewport per iPhone -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- Imposta la web app iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AMAT Web App">
+
+  <!-- 🔒 Blocca orientamento verticale solo in modalità PWA -->
+  <meta name="apple-mobile-web-app-orientations" content="portrait">
+
+  <!-- Icona per la schermata Home -->
   <link rel="apple-touch-icon" href="https://abbado71.github.io/AMAT_V2/apple-touch-icon_1.png">
+
   <title>AMAT Web App</title>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -54,30 +67,31 @@
       border-radius: 10px;
     }
 
-    /* 🔒 BLOCCO ORIENTAMENTO: forza sempre layout verticale */
+    /* 👇 Mostra un messaggio se si ruota in orizzontale (solo Safari normale) */
     @media screen and (orientation: landscape) {
-      body {
-        transform: rotate(-90deg);
-        transform-origin: center center;
-        width: 100vh;
-        height: 100vw;
-        overflow: hidden;
+      body::before {
+        content: "Per favore, ruota il dispositivo in verticale 📱";
         position: fixed;
-        top: 0;
-        left: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 1em 2em;
+        border-radius: 10px;
+        font-size: 1.2em;
+        text-align: center;
+        z-index: 9999;
       }
-
       #pagina-iniziale,
       #pagina-biglietto,
       #pagina-ticket {
-        transform: rotate(90deg);
-        transform-origin: center center;
-        width: 100vh;
-        height: 100vw;
+        display: none !important;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- SCHERMATA INIZIALE -->
@@ -239,5 +253,6 @@
       }
     });
   </script>
+
 </body>
 </html>
